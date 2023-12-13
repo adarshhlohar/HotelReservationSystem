@@ -8,9 +8,9 @@ public class HostelReservationSystem {
 		System.out.println("Welcom to Hotel Reservation System !!");
 		ArrayList<Hotels> hotelList = new ArrayList<>();
 		Hotels[] addHotels = {
-				new Hotels("Lakewood", 3),
-				new Hotels("Bridgewood", 4),
-				new Hotels("Ridgewood", 5)
+				new Hotels("Lakewood", 110),
+				new Hotels("Bridgewood", 160),
+				new Hotels("Ridgewood", 220)
 		};
 		
 		for(Hotels hotel : addHotels) {
