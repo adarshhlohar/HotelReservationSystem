@@ -12,7 +12,7 @@ public class HostelReservationSystem {
 		 */
 		ArrayList<Hotels> hotelList = new ArrayList<>();
 		
-		/*
+		/*UC-3 Added A weekend rate for regular customer
 		 * Create an array of Hotels to add to the list
 		 */
 		Hotels[] addHotels = {
@@ -43,11 +43,12 @@ public class HostelReservationSystem {
 		 * of the hotel with the minimum rate for regular customers from the provided list of hotels.
 		 * This demonstrates how to utilize the 'cheapestHostel' method.
 		 */
-		FindingHotelWithRequirement service = new FindingHotelWithRequirement();
+		FindingHotelWithRequirement hotelService = new FindingHotelWithRequirement();
+		
 		String[] date = {"2020-09-10","2020-09-11"};
+		hotelService.cheapestHostelForGivenDate(hotelList,date);
 		
-		service.cheapestHostelForGivenDate(hotelList,date);
-		
-		
+		String[] date2 = {"2020-09-11","2020-09-12"};
+		hotelService.findingHotelsBasedOnWeekdayAndWeekend(hotelList,date2);
 	}
 }
