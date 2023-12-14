@@ -16,9 +16,9 @@ public class HostelReservationSystem {
 		 * Create an array of Hotels to add to the list
 		 */
 		Hotels[] addHotels = {
-				new Hotels("Lakewood", 110),
-				new Hotels("Bridgewood", 160),
-				new Hotels("Ridgewood", 220)
+				new Hotels("Lakewood", 110, 90),
+				new Hotels("Bridgewood", 160, 50),
+				new Hotels("Ridgewood", 220, 150)
 		};
 		
 		/*
