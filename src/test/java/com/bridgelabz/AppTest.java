@@ -1,4 +1,4 @@
-package com.bridgelabz.HostelReservationSystem;
+package com.bridgelabz;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

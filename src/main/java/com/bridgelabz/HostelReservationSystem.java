@@ -17,8 +17,11 @@ public class HostelReservationSystem {
 		 * UC-3 Added A weekend rate for regular customer Create an array of Hotels to
 		 * add to the list
 		 */
-		Hotels[] addHotels = { new Hotels("Lakewood", 110, 90, 3), new Hotels("Bridgewood", 160, 50, 4),
-				new Hotels("Ridgewood", 220, 150, 4) };
+		Hotels[] addHotels = { 
+				new Hotels("Lakewood", 110, 90, 3), 
+				new Hotels("Bridgewood", 160, 50, 4),
+				new Hotels("Ridgewood", 220, 150, 5) 
+				};
 
 		/*
 		 * Add hotels to the ArrayList
@@ -36,7 +39,7 @@ public class HostelReservationSystem {
 		}
 
 		/*
-		 * UC-2 Ability to find thecheapest Hotel Example usage of the
+		 * UC-2 Ability to find the cheapest Hotel Example usage of the
 		 * FindingHotelWithRequirement service to find and print the name of the hotel
 		 * with the minimum rate for regular customers from the provided list of hotels.
 		 * This demonstrates how to utilize the 'cheapestHostel' method.
@@ -46,7 +49,14 @@ public class HostelReservationSystem {
 		String[] date = { "2020-09-10", "2020-09-11" };
 		hotelService.cheapestHostelForGivenDate(hotelList, date);
 
+		/*
+		 * UC-3 to find the cheapest Hotel for a given Date Range based on weekday and weekend
+		 * with the minimum rate for regular customers from the provided list of hotels.
+		 * This demonstrates how to utilize the 'cheapestHostelwithrespect weekend and weekday' method.
+		 */
 		String[] date2 = { "2020-09-11", "2020-09-12" };
 		hotelService.findingHotelsBasedOnWeekdayAndWeekend(hotelList, date2);
+		
+		hotelService.findBestRatedHotels(hotelList,date2);
 	}
 }
