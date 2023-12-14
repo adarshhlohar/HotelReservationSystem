@@ -15,7 +15,10 @@ public class FindingHotelWithRequirement {
 	 * @param hotel The list of hotels to search for the cheapest one.And the Dates
 	 */
 	int totalAmount = 0;
-
+	
+	/*
+	 * finding the cheapest hotel at given date 
+	 */
 	public void cheapestHostelForGivenDate(List<Hotels> hotel, String[] date) {
 		totalAmount = 0;
 		// It will Iterating through the date
@@ -42,7 +45,6 @@ public class FindingHotelWithRequirement {
 	public void findingHotelsBasedOnWeekdayAndWeekend(ArrayList<Hotels> hotel, String[] date) {
 		totalAmount = 0;
 		// first we can iterating through the dates
-		System.out.println("cheapestHostelForGivenDate");
 		for (int i = 0; i < date.length; i++) {
 			// I am checking the date if the date is weekend or weekday
 			if (dateIsWeekday(date[i])) {
@@ -51,6 +53,18 @@ public class FindingHotelWithRequirement {
 				cheapestHotelOnWeekdays(hotel, date[i]);
 			} else {
 				cheapestHotelOnWeekend(hotel, date[i]);
+			}
+		}
+		System.out.println("And the total amount is " + totalAmount);
+	}
+
+	public void findBestRatedHotels(ArrayList<Hotels> hotel, String[] date) {
+		totalAmount = 0;
+		for (int i = 0; i < date.length; i++) {
+			if (dateIsWeekday(date[i])) {
+				hotelWithBestRatedWeekday(hotel, date[i]);
+			}else {
+				hotelWithBestRatedWeekend(hotel, date[i]);
 			}
 		}
 		System.out.println("And the total amount is " + totalAmount);
@@ -120,6 +134,7 @@ public class FindingHotelWithRequirement {
 	 */
 	void cheapestHotelOnWeekend(List<Hotels> hotel, String date) {
 		/*
+		 * UC-1
 		 * create an iterator to traverse the list of hotels
 		 */
 		Iterator<Hotels> iterator = hotel.iterator();
@@ -149,8 +164,80 @@ public class FindingHotelWithRequirement {
 
 			// Now, hotelWithMinRate contains the hotel with the minimum rate for regular
 			// customers
-			System.out.println("Hotel with the minimum rate for regular customers in weekday: "
+			System.out.println("Hotel with the minimum rate for regular customers in weekend: "
 					+ hotelWithMinRate.getName() + " For the date " + date + " The min price of hotel is " + minRate);
 		}
 	}
+
+	void hotelWithBestRatedWeekday(List<Hotels> hotel, String date) {
+		/*
+		 * create an iterator to traverse the list of hotels
+		 */
+		Iterator<Hotels> iterator = hotel.iterator();
+
+		if (iterator.hasNext()) {
+			// Initialize the first hotel as the one with the minimum rate
+			Hotels hotelWithMaxRating = iterator.next();
+			int maxRating = hotelWithMaxRating.getRating();
+
+			// Iterate through the remaining hotels
+			while (iterator.hasNext()) {
+				// Get the current hotel
+				Hotels currentHotel = iterator.next();
+				int currentRating = currentHotel.getRating();
+
+				// Update the hotelWithMinRate if the current hotel has a lower rate
+				if (currentRating > maxRating) {
+					// Update the hotelWithMinRate and minRate
+					hotelWithMaxRating = currentHotel;
+					maxRating = currentRating;
+				}
+			}
+			int maxRate = hotelWithMaxRating.getratesForRegularInWeekday();
+			// Adding the total amount if found cheapest hotel
+			totalAmount += maxRate;
+
+			// Now, hotelWithMinRate contains the hotel with the minimum rate for regular
+			// customers
+			System.out.println("Hotel with the best rating is : " + hotelWithMaxRating.getName() + " For the date "
+					+ date + " The  price for regular customer at weekday is :" + maxRate);
+		}
+	}
+	
+	
+	void hotelWithBestRatedWeekend(List<Hotels> hotel, String date) {
+		/*
+		 * create an iterator to traverse the list of hotels
+		 */
+		Iterator<Hotels> iterator = hotel.iterator();
+
+		if (iterator.hasNext()) {
+			// Initialize the first hotel as the one with the minimum rate
+			Hotels hotelWithMaxRating = iterator.next();
+			int maxRating = hotelWithMaxRating.getRating();
+
+			// Iterate through the remaining hotels
+			while (iterator.hasNext()) {
+				// Get the current hotel
+				Hotels currentHotel = iterator.next();
+				int currentRating = currentHotel.getRating();
+
+				// Update the hotelWithMinRate if the current hotel has a lower rate
+				if (currentRating > maxRating) {
+					// Update the hotelWithMinRate and minRate
+					hotelWithMaxRating = currentHotel;
+					maxRating = currentRating;
+				}
+			}
+			int maxRate = hotelWithMaxRating.getRatesForRegularInWeekend();
+			// Adding the total amount if found cheapest hotel
+			totalAmount += maxRate;
+
+			// Now, hotelWithMinRate contains the hotel with the minimum rate for regular
+			// customers
+			System.out.println("Hotel with the best rating is : " + hotelWithMaxRating.getName() + " For the date "
+					+ date + " The  price for regular customer at weekend is :" + maxRate);
+		}
+	}
+
 }
