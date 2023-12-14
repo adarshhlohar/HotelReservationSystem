@@ -3,7 +3,8 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class HostelReservationSystem {
+public class Main {
+
 	public static void main(String[] args) {
 		System.out.println("Welcom to Hotel Reservation System !!");
 
@@ -17,11 +18,8 @@ public class HostelReservationSystem {
 		 * UC-3 Added A weekend rate for regular customer Create an array of Hotels to
 		 * add to the list
 		 */
-		Hotels[] addHotels = { 
-				new Hotels("Lakewood", 110, 90, 3), 
-				new Hotels("Bridgewood", 160, 50, 4),
-				new Hotels("Ridgewood", 220, 150, 5) 
-				};
+		Hotels[] addHotels = { new Hotels("Lakewood", 110, 90, 3), new Hotels("Bridgewood", 150, 50, 4),
+				new Hotels("Ridgewood", 220, 150, 5) };
 
 		/*
 		 * Add hotels to the ArrayList
@@ -50,13 +48,20 @@ public class HostelReservationSystem {
 		hotelService.cheapestHostelForGivenDate(hotelList, date);
 
 		/*
-		 * UC-3 to find the cheapest Hotel for a given Date Range based on weekday and weekend
-		 * with the minimum rate for regular customers from the provided list of hotels.
-		 * This demonstrates how to utilize the 'cheapestHostelwithrespect weekend and weekday' method.
+		 * UC-3 to find the cheapest Hotel for a given Date Range based on weekday and
+		 * weekend with the minimum rate for regular customers from the provided list of
+		 * hotels. This demonstrates how to utilize the 'cheapestHostelwithrespect
+		 * weekend and weekday' method.
 		 */
 		String[] date2 = { "2020-09-11", "2020-09-12" };
 		hotelService.findingHotelsBasedOnWeekdayAndWeekend(hotelList, date2);
+
 		
-		hotelService.findBestRatedHotels(hotelList,date2);
+		hotelService.cheapestBestRatedHotel(hotelList,date2);
+		
+		/*
+		 * UC-7 find the Best Rated Hotel for a given Date Range
+		 */
+		hotelService.findBestRatedHotels(hotelList, date2);
 	}
 }

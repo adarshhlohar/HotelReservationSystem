@@ -15,9 +15,9 @@ public class FindingHotelWithRequirement {
 	 * @param hotel The list of hotels to search for the cheapest one.And the Dates
 	 */
 	int totalAmount = 0;
-	
+
 	/*
-	 * finding the cheapest hotel at given date 
+	 * finding the cheapest hotel at given date
 	 */
 	public void cheapestHostelForGivenDate(List<Hotels> hotel, String[] date) {
 		totalAmount = 0;
@@ -63,11 +63,40 @@ public class FindingHotelWithRequirement {
 		for (int i = 0; i < date.length; i++) {
 			if (dateIsWeekday(date[i])) {
 				hotelWithBestRatedWeekday(hotel, date[i]);
-			}else {
+			} else {
 				hotelWithBestRatedWeekend(hotel, date[i]);
 			}
 		}
 		System.out.println("And the total amount is " + totalAmount);
+	}
+
+	
+	
+	public void cheapestBestRatedHotel(ArrayList<Hotels> hotel, String[] date2) {
+		Iterator<Hotels> iterator = hotel.iterator();
+		if (iterator.hasNext()) {
+			Hotels hotelWithBestRate = iterator.next();
+			int weekdayPrice = hotelWithBestRate.getratesForRegularInWeekday();
+			int weekendPrice = hotelWithBestRate.getRatesForRegularInWeekend();
+			double bestRatingRatio = (weekdayPrice + weekendPrice) / (hotelWithBestRate.getRating());
+			int totalHotelPrice = 0;
+			while (iterator.hasNext()) {
+				Hotels currentHotel = iterator.next();
+				int currentPriceWeekday = currentHotel.getratesForRegularInWeekday();
+				int currentPriceWeekend = currentHotel.getRatesForRegularInWeekend();
+
+				double bestRatingRatioWithPrice = (currentPriceWeekday + currentPriceWeekend)
+						/ (currentHotel.getRating());
+
+				if (bestRatingRatioWithPrice < bestRatingRatio) {
+					bestRatingRatio = bestRatingRatioWithPrice;
+					totalHotelPrice = currentPriceWeekday + currentPriceWeekend;
+					hotelWithBestRate = currentHotel;
+				}
+			}
+			System.out.println("The best hotel with respect to cheapest price and best rating is : "
+					+ hotelWithBestRate.getName() + " The rating of this hotel is : " +  hotelWithBestRate.getRating() + " And the Total Regular rate is : " + totalHotelPrice);
+		}
 	}
 
 	/*
@@ -134,8 +163,7 @@ public class FindingHotelWithRequirement {
 	 */
 	void cheapestHotelOnWeekend(List<Hotels> hotel, String date) {
 		/*
-		 * UC-1
-		 * create an iterator to traverse the list of hotels
+		 * UC-1 create an iterator to traverse the list of hotels
 		 */
 		Iterator<Hotels> iterator = hotel.iterator();
 
@@ -203,8 +231,7 @@ public class FindingHotelWithRequirement {
 					+ date + " The  price for regular customer at weekday is :" + maxRate);
 		}
 	}
-	
-	
+
 	void hotelWithBestRatedWeekend(List<Hotels> hotel, String date) {
 		/*
 		 * create an iterator to traverse the list of hotels
