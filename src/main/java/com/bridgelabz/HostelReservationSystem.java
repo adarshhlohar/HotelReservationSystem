@@ -44,7 +44,9 @@ public class HostelReservationSystem {
 		 * This demonstrates how to utilize the 'cheapestHostel' method.
 		 */
 		FindingHotelWithRequirement service = new FindingHotelWithRequirement();
-		service.cheapestHostel(hotelList);
+		String[] date = {"2020-09-10","2020-09-11"};
+		
+		service.cheapestHostelForGivenDate(hotelList,date);
 		
 		
 	}
