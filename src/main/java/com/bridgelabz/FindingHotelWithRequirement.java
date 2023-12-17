@@ -95,7 +95,37 @@ public class FindingHotelWithRequirement {
 				}
 			}
 			System.out.println("The best hotel with respect to cheapest price and best rating is : "
-					+ hotelWithBestRate.getName() + " The rating of this hotel is : " +  hotelWithBestRate.getRating() + " And the Total Regular rate is : " + totalHotelPrice);
+					+ hotelWithBestRate.getName() + " The rating of this hotel is : " + hotelWithBestRate.getRating()
+					+ " And the Total Regular rate is : " + totalHotelPrice);
+		}
+	}
+
+	
+	
+	public void cheapestBestRatedHotelForRewardCustomer(ArrayList<Hotels> hotel, String[] date2) {
+		Iterator<Hotels> iterator = hotel.iterator();
+		if (iterator.hasNext()) {
+			Hotels hotelWithBestRate = iterator.next();
+			int weekdayPriceForReward = hotelWithBestRate.getRateForRewardCustomerInWeekday();
+			int weekendPriceForReward = hotelWithBestRate.getRateForRewardCustomerInWeekend();
+			double bestRatingRatio = (weekdayPriceForReward + weekendPriceForReward) / (hotelWithBestRate.getRating());
+			int totalHotelPrice = 0;
+			while (iterator.hasNext()) {
+				Hotels currentHotel = iterator.next();
+				int currentPriceWeekdayReward = currentHotel.getRateForRewardCustomerInWeekday();
+				int currentPriceWeekendReward = currentHotel.getRateForRewardCustomerInWeekend();
+				double bestRatingRatioWithPrice = (currentPriceWeekdayReward + currentPriceWeekendReward)
+						/ (currentHotel.getRating());
+
+				if (bestRatingRatioWithPrice < bestRatingRatio) {
+					bestRatingRatio = bestRatingRatioWithPrice;
+					totalHotelPrice = currentPriceWeekdayReward + currentPriceWeekendReward;
+					hotelWithBestRate = currentHotel;
+				}
+			}
+			System.out.println("The best hotel with respect to cheapest price for reward customer and best rating is : "
+					+ hotelWithBestRate.getName() + " The rating of this hotel is : " + hotelWithBestRate.getRating()
+					+ " And the Total Regular rate is : " + totalHotelPrice);
 		}
 	}
 
