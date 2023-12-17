@@ -5,12 +5,15 @@ public class Hotels {
 	private int ratesForRegularInWeekday;
 	private int ratesForRegularInWeekend;
 	private int rating;
+	private int rateForRewardCustomerInWeekday;
+	private int rateForRewardCustomerInWeekend;
 
-	public Hotels(String name, int ratesForRegularInWeekday, int ratesForRegularInWeekend, int rating) {
+	public Hotels(String name, int ratesForRegularInWeekday, int ratesForRegularInWeekend, int rating, int rateForRewardCustomerInWeekday,int rateForRewardCustomerInWeekend) {
 		this.name = name;
 		this.ratesForRegularInWeekday = ratesForRegularInWeekday;
 		this.ratesForRegularInWeekend = ratesForRegularInWeekend;
 		this.rating = rating;
+		this.rateForRewardCustomerInWeekday = rateForRewardCustomerInWeekday;
 	}
 
 	public String getName() {
@@ -21,11 +24,11 @@ public class Hotels {
 		this.name = name;
 	}
 
-	public int getratesForRegularInWeekday() {
+	public int getRatesForRegularInWeekday() {
 		return ratesForRegularInWeekday;
 	}
 
-	public void setratesForRegularInWeekday(int ratesForRegularInWeekday) {
+	public void setRatesForRegularInWeekday(int ratesForRegularInWeekday) {
 		this.ratesForRegularInWeekday = ratesForRegularInWeekday;
 	}
 
@@ -45,10 +48,31 @@ public class Hotels {
 		this.rating = rating;
 	}
 
+	public int getRateForRewardCustomerInWeekday() {
+		return rateForRewardCustomerInWeekday;
+	}
+
+	public void setRateForRewardCustomerInWeekday(int rateForRewardCustomerInWeekday) {
+		this.rateForRewardCustomerInWeekday = rateForRewardCustomerInWeekday;
+	}
+
+	public int getRateForRewardCustomerInWeekend() {
+		return rateForRewardCustomerInWeekend;
+	}
+
+	public void setRateForRewardCustomerInWeekend(int rateForRewardCustomerInWeekend) {
+		this.rateForRewardCustomerInWeekend = rateForRewardCustomerInWeekend;
+	}
+
 	@Override
 	public String toString() {
 		return "Hotels [name=" + name + ", ratesForRegularInWeekday=" + ratesForRegularInWeekday
-				+ ", ratesForRegularInWeekend=" + ratesForRegularInWeekend + ", rating=" + rating + "]";
+				+ ", ratesForRegularInWeekend=" + ratesForRegularInWeekend + ", rating=" + rating
+				+ ", rateForRewardCustomerInWeekday=" + rateForRewardCustomerInWeekday
+				+ ", rateForRewardCustomerInWeekend=" + rateForRewardCustomerInWeekend + "]";
 	}
+
+	
+
 
 }
