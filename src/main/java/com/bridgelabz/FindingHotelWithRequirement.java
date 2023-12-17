@@ -76,13 +76,13 @@ public class FindingHotelWithRequirement {
 		Iterator<Hotels> iterator = hotel.iterator();
 		if (iterator.hasNext()) {
 			Hotels hotelWithBestRate = iterator.next();
-			int weekdayPrice = hotelWithBestRate.getratesForRegularInWeekday();
+			int weekdayPrice = hotelWithBestRate.getRatesForRegularInWeekday();
 			int weekendPrice = hotelWithBestRate.getRatesForRegularInWeekend();
 			double bestRatingRatio = (weekdayPrice + weekendPrice) / (hotelWithBestRate.getRating());
 			int totalHotelPrice = 0;
 			while (iterator.hasNext()) {
 				Hotels currentHotel = iterator.next();
-				int currentPriceWeekday = currentHotel.getratesForRegularInWeekday();
+				int currentPriceWeekday = currentHotel.getRatesForRegularInWeekday();
 				int currentPriceWeekend = currentHotel.getRatesForRegularInWeekend();
 
 				double bestRatingRatioWithPrice = (currentPriceWeekday + currentPriceWeekend)
@@ -130,13 +130,13 @@ public class FindingHotelWithRequirement {
 		if (iterator.hasNext()) {
 			// Initialize the first hotel as the one with the minimum rate
 			Hotels hotelWithMinRate = iterator.next();
-			int minRate = hotelWithMinRate.getratesForRegularInWeekday();
+			int minRate = hotelWithMinRate.getRatesForRegularInWeekday();
 
 			// Iterate through the remaining hotels
 			while (iterator.hasNext()) {
 				// Get the current hotel
 				Hotels currentHotel = iterator.next();
-				int currentRate = currentHotel.getratesForRegularInWeekday();
+				int currentRate = currentHotel.getRatesForRegularInWeekday();
 
 				// Update the hotelWithMinRate if the current hotel has a lower rate
 				if (currentRate < minRate) {
@@ -221,7 +221,7 @@ public class FindingHotelWithRequirement {
 					maxRating = currentRating;
 				}
 			}
-			int maxRate = hotelWithMaxRating.getratesForRegularInWeekday();
+			int maxRate = hotelWithMaxRating.getRatesForRegularInWeekday();
 			// Adding the total amount if found cheapest hotel
 			totalAmount += maxRate;
 

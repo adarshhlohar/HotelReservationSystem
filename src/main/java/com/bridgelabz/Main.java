@@ -18,8 +18,11 @@ public class Main {
 		 * UC-3 Added A weekend rate for regular customer Create an array of Hotels to
 		 * add to the list
 		 */
-		Hotels[] addHotels = { new Hotels("Lakewood", 110, 90, 3), new Hotels("Bridgewood", 150, 50, 4),
-				new Hotels("Ridgewood", 220, 150, 5) };
+		Hotels[] addHotels = { 
+				new Hotels("Lakewood", 110, 90, 3,80,80), 
+				new Hotels("Bridgewood", 150, 50, 4,110,50),
+				new Hotels("Ridgewood", 220, 150, 5,100,40)
+				};
 
 		/*
 		 * Add hotels to the ArrayList
