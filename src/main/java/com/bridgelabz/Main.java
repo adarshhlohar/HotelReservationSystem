@@ -66,5 +66,11 @@ public class Main {
 		 * UC-7 find the Best Rated Hotel for a given Date Range
 		 */
 		hotelService.findBestRatedHotels(hotelList, date2);
+		
+		
+		/*
+		 * UC-10 find the Best Rated Hotel for reward customer a given Date Range
+		 */
+		hotelService.cheapestBestRatedHotelForRewardCustomer(hotelList, date2);
 	}
 }

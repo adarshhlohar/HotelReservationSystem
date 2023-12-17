@@ -14,6 +14,7 @@ public class Hotels {
 		this.ratesForRegularInWeekend = ratesForRegularInWeekend;
 		this.rating = rating;
 		this.rateForRewardCustomerInWeekday = rateForRewardCustomerInWeekday;
+		this.rateForRewardCustomerInWeekend = rateForRewardCustomerInWeekend;
 	}
 
 	public String getName() {
